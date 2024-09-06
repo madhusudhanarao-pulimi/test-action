@@ -19,8 +19,15 @@ outputs:
 runs:
   using: 'node20'
   main: 'index.js'
-  steps:
-    - name: printing
-     run: |
-        echo "Listing the files in the action_repo directory"
+
+jobs:
+  print-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print a message
+        run: echo "Hello, this is your custom message from GitHub Actions!"
 
