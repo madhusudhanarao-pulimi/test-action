@@ -19,5 +19,8 @@ outputs:
 runs:
   using: 'node20'
   main: 'index.js'
-  Write-Output "repo_name: "
-  Write-Output "run_id:"
+  steps:
+    - name: printing
+     run: |
+        echo "Listing the files in the action_repo directory"
+
