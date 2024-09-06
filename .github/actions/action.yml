@@ -21,13 +21,26 @@ runs:
   main: 'index.js'
 
 jobs:
-  print-message:
+  get-changed-files:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Print a message
-        run: echo "Hello, this is your custom message from GitHub Actions!"
+      - name: Get changed files
+        id: changed_files
+        run: |
+          # Get a list of changed files in the latest push
+          git diff --name-only HEAD^ HEAD > changed_files.txt
+          echo "Changed files:"
+          cat changed_files.txt
 
+      - name: Print file contents
+        run: |
+          echo "Reading file contents:"
+          while IFS= read -r file; do
+            echo "Content of $file:"
+            cat "$file"
+            echo ""
+          done < changed_files.txt
