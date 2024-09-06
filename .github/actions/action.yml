@@ -19,5 +19,5 @@ outputs:
 runs:
   using: 'node20'
   main: 'index.js'
-  Write-Output "repo_name: ${{ inputs.repo_name }}"
-  Write-Output "run_id: ${{ inputs.run_id }}"
+  Write-Output "repo_name: "
+  Write-Output "run_id:"
