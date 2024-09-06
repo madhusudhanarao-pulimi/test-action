@@ -2,10 +2,15 @@ name: 'Hello World JS Action'
 description: 'Greet someone and record the time'
 
 inputs:
-  who-to-greet:
-    description: 'Who to greet'
+  run_id:
+    description: 'The workflow run ID to analyze'
     required: true
-    default: 'World'
+  repo_owner:
+    description: 'The owner of the repository'
+    required: true
+  repo_name:
+    description: 'The name of the repository'
+    required: true
     
 outputs:
   time:
@@ -14,3 +19,6 @@ outputs:
 runs:
   using: 'node20'
   main: 'index.js'
+  run: |
+    Write-Output "repo_name: ${{ inputs.repo_name }}"
+    Write-Output "run_id: ${{ inputs.run_id }}"
